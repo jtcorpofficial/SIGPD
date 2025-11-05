@@ -1,0 +1,232 @@
+/* Estilo general del body */
+body {
+  background-image: url('../img/fondo.png'); /* Imagen de fondo selvático */
+  background-size: cover; /* La imagen cubre todo el fondo */
+  background-position: center; /* Centrada horizontal y verticalmente */
+  background-attachment: fixed; /* El fondo no se desplaza con el scroll */
+  font-family: 'Fredoka', sans-serif; /* Tipografía amigable */
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /* Altura mínima de toda la pantalla */
+  overflow-x: hidden; /* Evita desbordamiento horizontal */
+}
+
+/* Encabezado con transparencia y desenfoque */
+.jungle-header {
+  background-color: rgba(107, 47, 30, 0.85); /* Marrón translúcido */
+  backdrop-filter: blur(4px); /* Desenfoque detrás del header */
+  padding: 1rem 2rem; /* Espaciado interno */
+  display: flex;
+  justify-content: space-between; /* Título a la izquierda, botón a la derecha */
+  align-items: center;
+  color: white; /* Texto blanco */
+}
+
+/* Título dentro del header */
+.jungle-header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Botón de navegación personalizado */
+.btn-safari {
+  background-color: #f59e0b; /* Amarillo oscuro */
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Sombra alrededor */
+  transition: all 0.3s ease;
+}
+
+/* Efecto hover del botón */
+.btn-safari:hover {
+  background-color: #fbbf24; /* Cambio a un tono más claro */
+  transform: scale(1.05); /* Aumenta ligeramente de tamaño */
+}
+
+/* Contenedor principal del "libro" */
+.book-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px); /* Resta altura del header */
+  padding: 2rem;
+  position: relative;
+}
+
+/* Componente visual del "libro" de reglas */
+.book {
+  background-color: transparent;
+  perspective: 2000px; /* Efecto 3D si se quisiera usar animación */
+  position: relative;
+  width: 1000px;
+  max-width: 95vw; /* Evita que desborde en pantallas pequeñas */
+  height: 500px;
+}
+
+/* Página de reglas, oculta por defecto */
+.page {
+  display: none;
+  width: 100%;
+  background: #fff6f1; /* Fondo crema claro */
+  border-radius: 16px; /* Esquinas redondeadas */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Sombra para efecto de profundidad */
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2rem;
+  gap: 2rem;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+/* Página activa que sí se muestra */
+.page.active {
+  display: flex;
+  z-index: 1;
+}
+
+/* Columna dentro de la página */
+.page-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Títulos dentro de las páginas */
+.page h2 {
+  font-size: 1.4rem;
+  margin-top: 0;
+}
+
+/* Texto general y elementos de lista */
+.page p,
+.page li {
+  font-size: 1.1rem;
+  line-height: 1.6; /* Espaciado entre líneas */
+}
+
+/* Listas ordenadas y desordenadas */
+.page ol,
+.page ul {
+  padding-left: 1.5rem; /* Sangría para ítems */
+}
+
+/* Botones de navegación entre páginas */
+.btn-pasar {
+  position: absolute; /* Posicionados respecto al contenedor */
+  bottom: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #f0a500;
+  border: none;
+  font-weight: bold;
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 5px #0004;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  z-index: 10;
+}
+
+/* Efecto hover en los botones de pasar página */
+.btn-pasar:hover {
+  transform: scale(1.05);
+}
+
+/* Botón "Anterior" alineado a la izquierda */
+.btn-pasar.left {
+  left: 1rem;
+}
+
+/* Botón "Siguiente" alineado a la derecha */
+.btn-pasar.right {
+  right: 1rem;
+}
+
+/* Línea divisoria entre columnas */
+.page-column:first-child {
+  border-right: 2px solid rgba(0, 0, 0, 0.1); /* Línea sutil */
+  padding-right: 1.5rem;
+}
+
+.page-column:last-child {
+  padding-left: 1.5rem;
+}
+
+/* Oculta los botones de página si no está activa */
+.page:not(.active) .page-buttons {
+  display: none;
+}
+
+/* ==== Ajustes globales adicionales ==== */
+html, body {
+  overflow-x: hidden; /* Previene scroll horizontal */
+  width: 100%;
+}
+
+/* Más espacio inferior para que los botones no queden pegados */
+.book-container {
+  padding: 2rem 1rem 4rem 1rem;
+  box-sizing: border-box;
+}
+
+/* === Media query para pantallas pequeñas (Responsive) === */
+@media screen and (max-width: 768px) {
+
+  /* Header compacto y apilado */
+  .jungle-header {
+    padding: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  /* Botón dentro del header alineado a la derecha */
+  .btn-safari {
+    align-self: flex-end;
+  }
+
+  /* El "libro" ocupa el 100% del ancho disponible */
+  .book {
+    width: 100%;
+    height: auto;
+  }
+
+  /* La página se convierte en columna */
+  .page {
+    flex-direction: column;
+    height: auto;
+    padding-bottom: 2rem;
+    box-sizing: border-box;
+  }
+
+  /* Columnas una debajo de otra */
+  .page-column {
+    border-right: none !important; /* Elimina la línea divisoria */
+    padding: 1rem 0 !important;
+  }
+
+  /* Reorganización vertical de los botones */
+  .page-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: stretch;
+    padding: 1rem 0 0;
+    position: static;
+    width: 100%;
+  }
+
+  /* Botones de navegación adaptados al ancho completo */
+  .btn-pasar {
+    position: static;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
+

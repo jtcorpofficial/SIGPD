@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es"> <!-- Define el idioma principal del documento como español -->
+<head>
+  <meta charset="UTF-8" /> <!-- Codificación de caracteres para admitir acentos, ñ, etc. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Configura el comportamiento responsivo en móviles -->
+  <title>Reglas del Juego - Draftosaurus</title> <!-- Título de la pestaña del navegador -->
+
+  <!-- Enlace al archivo de estilos específico para esta sección -->
+  <link rel="stylesheet" href="css/stylereglas.css" />
+</head>
+<body>
+
+  <!-- Encabezado del sitio -->
+  <header class="jungle-header">
+    <h1><span></span> Draftosaurus</h1> <!-- Título con ícono -->
+    <a href="index.php" class="btn-safari">Inicio</a> <!-- Botón para volver a la página principal -->
+  </header>
+
+  <!-- Contenedor principal de las páginas del libro de reglas -->
+  <main class="book-container">
+    <section class="book">
+
+      <!-- Página 1 del reglamento -->
+      <article class="page active"> <!-- Clase 'active' indica que esta página es visible al inicio -->
+        <section class="page-column">
+          <h2>Objetivo del Juego</h2>
+          <p>Construir un parque de dinosaurios y colocarlos estratégicamente en los distintos recintos para obtener la mayor cantidad de puntos al final de la partida.</p>
+          
+          <h2>Cómo se Juega</h2>
+          <p>El juego se desarrolla en dos rondas, y cada ronda tiene seis turnos.</p>
+        </section>
+
+        <section class="page-column">
+          <h2>Preparación del Juego</h2>
+          <ol>
+            <li>Cada jugador toma un tablero del parque y lo coloca frente a sí.</li>
+            <li>Todos los dinosaurios se meten en la bolsa y se mezclan bien.</li>
+            <li>Decidan quién será el primer jugador.</li>
+          </ol>
+        </section>
+
+        <!-- Navegación entre páginas (botones) -->
+        <nav class="page-buttons">
+          <button class="btn-pasar left btn-anterior" onclick="paginaAnterior()">← Anterior</button>
+          <button class="btn-pasar right btn-siguiente" onclick="pasarPagina()">Siguiente →</button>
+        </nav>
+      </article>
+
+      <!-- Página 2 del reglamento -->
+      <article class="page"> <!-- Esta página no está visible al inicio -->
+        <section class="page-column">
+          <h2>Turnos del Juego</h2>
+          <ol>
+            <li>Toma de Dinosaurios</li>
+            <li>Lanzamiento del Dado</li>
+            <li>Colocación</li>
+            <li>Paso de Dinosaurios</li>
+            <li>Segunda Ronda</li>
+          </ol>
+        </section>
+
+        <section class="page-column">
+          <h2>Restricciones del Dado</h2>
+          <ul>
+            <li>Zona izquierda o derecha del parque</li>
+            <li>Zona boscosa o de rocas</li>
+            <li>Recinto vacío</li>
+            <li>Recinto sin T-Rex</li>
+          </ul>
+        </section>
+
+        <!-- Botones para navegar entre páginas -->
+        <nav class="page-buttons">
+          <button class="btn-pasar left btn-anterior" onclick="paginaAnterior()">← Anterior</button>
+          <button class="btn-pasar right btn-siguiente" onclick="pasarPagina()">Siguiente →</button>
+        </nav>
+      </article>
+
+    </section>
+  </main>
+
+  <!-- Script para manejar el cambio de páginas -->
+  <script>
+    let paginaActual = 0; // Variable que guarda el índice de la página actual
+    const paginas = document.querySelectorAll(".page"); // Selecciona todas las páginas
+
+    // Muestra u oculta los botones dependiendo de la página actual
+    function actualizarBotones() {
+      const btnsAnteriores = document.querySelectorAll(".btn-anterior");
+      const btnsSiguientes = document.querySelectorAll(".btn-siguiente");
+
+      // Oculta el botón "Anterior" en la primera página
+      btnsAnteriores.forEach(btn => {
+        btn.style.display = paginaActual === 0 ? "none" : "inline-block";
+      });
+
+      // Oculta el botón "Siguiente" en la última página
+      btnsSiguientes.forEach(btn => {
+        btn.style.display = paginaActual === paginas.length - 1 ? "none" : "inline-block";
+      });
+    }
+
+    // Pasa a la siguiente página
+    function pasarPagina() {
+      if (paginaActual < paginas.length - 1) {
+        paginas[paginaActual].classList.remove("active"); // Oculta la página actual
+        paginaActual++; // Avanza al siguiente índice
+        paginas[paginaActual].classList.add("active"); // Muestra la nueva página
+        actualizarBotones(); // Actualiza la visibilidad de los botones
+      }
+    }
+
+    // Vuelve a la página anterior
+    function paginaAnterior() {
+      if (paginaActual > 0) {
+        paginas[paginaActual].classList.remove("active");
+        paginaActual--;
+        paginas[paginaActual].classList.add("active");
+        actualizarBotones();
+      }
+    }
+
+    // Al cargar el DOM, actualiza la visibilidad de los botones según la página actual
+    window.addEventListener("DOMContentLoaded", actualizarBotones);
+  </script>
+</body>
+</html>
+
+

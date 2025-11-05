@@ -1,0 +1,403 @@
+/* Fondo de cuerpo */
+body {
+  background-image: url('../img/fondo.png'); /* Imagen de fondo */
+  background-size: cover; /* Cubre todo el área */
+  background-position: center; /* Centrada horizontal y verticalmente */
+  background-attachment: fixed; /* Fondo fijo al hacer scroll */
+  font-family: 'Fredoka', sans-serif; /* Tipografía del sitio */
+  overflow-x: hidden; /* Evita desplazamiento horizontal */
+  display: flex;
+  flex-direction: column; /* Elementos en columna */
+  min-height: 100vh; /* Altura mínima: 100% de la pantalla */
+}
+
+/* Navbar elegante y semitransparente */
+.jungle-header {
+  background-color: rgba(107, 47, 30, 0.85); /* Marrón translúcido */
+  backdrop-filter: blur(4px); /* Desenfoque de fondo */
+  padding: 0.8rem 0;
+  z-index: 10; /* Asegura que esté por encima del resto */
+}
+
+/* Botón safari (armonioso con fondo) */
+.btn-safari {
+  background-color: #f59e0b; /* Color ocre suave */
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 0.5rem 1.2rem;
+  transition: all 0.3s ease; /* Transición suave al hacer hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Sombra */
+}
+.btn-safari:hover {
+  background-color: #fbbf24; /* Color más claro al pasar el mouse */
+  transform: scale(1.05); /* Ligero agrandamiento */
+}
+
+/* Sombra de texto para mejorar legibilidad */
+.text-shadow {
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+/* Footer */
+.footer {
+  background-color: rgba(107, 47, 30, 0.9); /* Marrón oscuro translúcido */
+  border-top: 2px solid #ffffff33; /* Línea superior semi-transparente */
+  font-size: 1rem;
+}
+
+/* Estilo del título de bienvenida */
+.welcome-box h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #fffbea; /* Amarillo pálido */
+  text-shadow: 2px 2px 10px #000; /* Sombra negra */
+  display: block;
+  word-wrap: break-word; /* Permite cortar palabras largas */
+}
+
+/* Estilo sobrescrito (repite h1) con ajuste de presentación */
+.welcome-box h1 {
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: #fffbea;
+  text-shadow: 2px 2px 10px #000;
+  display: inline;
+  white-space: nowrap; /* No permite salto de línea */
+}
+
+/* Texto del párrafo de bienvenida */
+.welcome-box p {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  text-shadow: 1px 1px 6px #000;
+}
+
+/* Espaciado global para h1 y p dentro de welcome-box */
+.welcome-box h1, .welcome-box p {
+  margin: 0;
+  padding: 0.3rem 0;
+}
+
+/* Estilo del dado (emoji) */
+.dado {
+  font-size: 4rem;
+  transition: transform 0.6s ease;
+  display: inline-block;
+}
+
+/* Animación del dado al lanzarlo */
+.dado.animar {
+  transform: rotate(720deg) scale(1.2); /* Gira y agranda */
+}
+
+/* Caja general para puntuación, dado, etc. */
+.caja-juego {
+  background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco semitransparente */
+  color: #3e3e3e; /* Texto gris oscuro */
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* Sombra suave */
+}
+
+/* Contenedor para libro de reglas */
+.libro-container {
+  min-height: 100vh;
+  background-color: #00000066; /* Fondo negro translúcido */
+}
+
+/* Libro en sí */
+.libro {
+  background: #fff6f1; /* Fondo crema claro */
+  border-radius: 16px;
+  width: 700px;
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+  padding: 2rem;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.25); /* Sombra */
+}
+
+/* Página dentro del libro (posición absoluta para efecto de transición) */
+.pagina {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: rotateY(90deg); /* Comienza rotada */
+  transform-origin: left;
+  transition: all 0.6s ease;
+  background: #fff6f1;
+  padding: 2rem;
+  overflow-y: auto; /* Permite scroll vertical dentro de la página */
+}
+
+/* Página activa (visible) */
+.pagina.active {
+  opacity: 1;
+  transform: rotateY(0deg); /* Gira a posición normal */
+  z-index: 1;
+}
+
+/* Botón para pasar de página */
+.btn-pasar {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: #f0a500;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-weight: bold;
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 5px #0004;
+  transition: transform 0.2s ease;
+}
+
+/* Hover del botón de página */
+.btn-pasar:hover {
+  transform: scale(1.05);
+}
+
+/* --- Ajustes de menú --- */
+.titulo-bienvenida{
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 800;              /* mucho más gruesa */
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: #22c55e;                /* verde llamativo */
+  text-shadow: 0 2px 6px rgba(0,0,0,.35);
+  letter-spacing: .5px;
+}
+
+/* Ajustes de botones del menú */
+.menu-columna{
+  max-width: 500px;     /* más ancho el contenedor */
+  margin-inline: auto;
+}
+
+.btn-menu{
+  padding: 20px;        /* más gruesos (alto) */
+  margin-bottom: 18px;  /* espacio entre botones */
+  font-size: 1.35rem;   /* más grande el texto */
+  border-radius: 16px;
+  transition: all .25s ease;
+}
+
+/* Botón salir: igual que los demás por defecto */
+.btn-salir{
+  background-color: #f8fafc;   /* claro igual que safari */
+  color: #111;
+  border: 1px solid #ddd;
+}
+
+/* Botón salir: se pone rojo al pasar el mouse */
+.btn-salir:hover{
+  background-color: #dc2626 !important; /* rojo fuerte */
+  color: #fff !important;
+  border-color: #b91c1c !important;
+}
+
+
+
+/* === Estilos solo para pantallas grandes === */
+@media screen and (min-width: 769px) {
+  /* Solo bloquea el scroll si el body (o html) tiene .no-scroll */
+  body.no-scroll,
+  html.no-scroll { overflow-y: hidden; }
+
+  body.no-scroll main { height: 100vh; overflow: hidden; }
+
+  .contenedor-tablero img {
+    max-height: 550px;
+    height: auto;
+  }
+}
+/* === Estilos específicos para móviles (hasta 768px) === */
+@media screen and (max-width: 768px) {
+  /* Encabezado reorganizado en columnas */
+  .jungle-header .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  /* Botón safari más compacto */
+  .btn-safari {
+    font-size: 0.9rem;
+    padding: 0.4rem 1rem;
+  }
+
+  /* Caja de bienvenida adaptada */
+  .welcome-box {
+    padding: 1rem;
+    max-width: 100%;
+  }
+
+  /* Título responsive */
+  .welcome-box h1 {
+    font-size: 1.8rem;
+    text-align: center;
+    white-space: normal; /* Permite saltos de línea */
+  }
+
+  /* Texto centrado */
+  .welcome-box p {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  /* Footer más pequeño */
+  .footer {
+    font-size: 0.85rem;
+  }
+}
+/* Fondo desenfocado reutilizable */
+body.con-fondo { 
+  position: relative; 
+  min-height: 100vh;
+}
+
+body.con-fondo::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("../img/fondo.png") center / cover no-repeat;
+  filter: blur(8px) brightness(0.9);
+  transform: scale(1.06); /* evita ver bordes al blurrear */
+  z-index: -2;
+}
+
+/* Velito sutil arriba del fondo para mejorar el contraste */
+body.con-fondo::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: -1;
+}
+.fondo-desenfocado {
+  position: fixed;
+  inset: 0;
+  background: url("../img/fondo.png") center / cover no-repeat;
+  filter: blur(8px) brightness(0.9);
+  transform: scale(1.06);   /* evita bordes del blur */
+  z-index: -1;              /* detrás del contenido */
+}
+
+/* Espaciado para el botón Volver en la navbar */
+.btn-volver {
+  margin-left: 8px;
+}
+/* Botón "Volver" beige con letras marrones (Fredoka) */
+.btn-volver{
+  background-color: #f5f5dc;            /* beige */
+  color: #4e3422;                        /* marrón */
+  border: 1px solid #e6dcc0;
+  font-family: 'Fredoka', system-ui, sans-serif;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.15);
+  transition: background-color .2s ease, transform .2s ease, box-shadow .2s ease;
+  margin-left: 8px;                      /* mismo espaciado que tenías */
+}
+
+.btn-volver:hover{
+  background-color: #efe7c8;             /* beige un toque más oscuro al hover */
+  color: #3d291c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,.2);
+}
+
+.btn-volver:focus{
+  outline: 3px solid rgba(78,52,34,.35);
+  outline-offset: 2px;
+}
+/* --- FIX: permitir scroll en Ajustes (y páginas largas) --- */
+html, body { height: auto; }
+
+body.con-fondo {
+  /* si alguna regla global puso overflow:hidden, la pisamos */
+  overflow-y: auto !important;
+  min-height: 100vh; /* altura mínima, no fija, para que pueda crecer */
+}
+
+/* El fondo borroso debe estar DETRÁS y no interceptar eventos */
+.fondo-desenfocado {
+  position: fixed;
+  inset: 0;
+  z-index: -1;           /* detrás de todo */
+  pointer-events: none;  /* no bloquea clic/scroll */
+  filter: blur(8px);
+  transform: scale(1.06); /* leve zoom para que el blur no recorte bordes */
+}
+
+/* La barra arriba pegada, pero sin bloquear el scroll del body */
+.navbar.jungle-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Caja blanca detrás del título y centrada */
+.titulo-con-caja{
+  position: relative;
+  display: block;               /* en lugar de inline-block */
+  width: max-content;           /* que se ajuste al texto */
+  margin: 0 auto 12px;          /* centra el bloque */
+  z-index: 0;
+}
+
+.titulo-con-caja::before{
+  content: "";
+  position: absolute;
+  inset: -10px -18px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.18);
+  z-index: -1;
+}
+
+/* ======== 🦖 FOOTER FIJO Y CENTRADO ======== */
+
+/* Asegura que el body ocupe toda la altura */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* El main crece para empujar el footer al fondo */
+main {
+  flex: 1;
+}
+
+/* Footer fijo en la parte inferior */
+footer {
+  background: linear-gradient(180deg, #3b2612, #1e1208);
+  color: #fff;
+  text-align: center;
+  padding: 12px 0;
+  font-size: 0.95rem;
+  border-radius: 20px 20px 0 0;
+
+  /* hace que quede pegado al fondo */
+  margin-top: auto;
+  width: 100%;
+  box-sizing: border-box;
+
+  /* centrado perfecto del texto */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+
+

@@ -1,0 +1,156 @@
+/* ================================
+   🎯 CONFIGURACIÓN GENERAL
+   ================================ */
+body.con-fondo {
+  background: radial-gradient(circle at center, #3e2a18, #1c0f08 80%);
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.jungle-header {
+  background: linear-gradient(180deg, #8b5a2b, #a36a3f);
+  border-radius: 0 0 20px 20px;
+  padding: 10px 18px;
+}
+
+footer {
+  background: linear-gradient(180deg, #3b2612, #1e1208);
+  border-radius: 20px 20px 0 0;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  flex-shrink: 0;
+}
+
+/* Caja general de los bloques del juego */
+.caja-juego {
+  background: #fffdf7;
+  color: #333;
+  border-radius: 14px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  padding: 16px;
+}
+
+/* Ajuste de los botones */
+.btn-safari {
+  background-color: #ffcc3f;
+  border: none;
+  color: #5a330f;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: transform 0.2s;
+}
+
+.btn-safari:hover {
+  transform: scale(1.03);
+}
+
+/* Dinosaurs */
+#mano-dinos img {
+  transition: transform 0.2s;
+}
+#mano-dinos img:hover {
+  transform: scale(1.08);
+}
+
+/* ================================
+   📱 MOBILE-FIRST (320px - 576px)
+   ================================ */
+@media (max-width: 576px) {
+  header.jungle-header {
+    border-radius: 0 0 16px 16px;
+    text-align: center;
+  }
+
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
+
+  main {
+    padding: 0.5rem;
+  }
+
+  .marco-tablero img.tablero-img {
+    width: 100%;
+    height: auto;
+  }
+
+  .caja-juego {
+    width: 95%;
+    margin: 0.5rem auto;
+    padding: 10px;
+  }
+
+  #mano-dinos img {
+    width: 60px;
+    height: auto;
+  }
+
+  .btn-safari {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+
+  footer {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* ================================
+   💻 TABLET (577px - 992px)
+   ================================ */
+@media (min-width: 577px) and (max-width: 992px) {
+  .container-fluid {
+    padding: 1rem;
+  }
+
+  .marco-tablero img.tablero-img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  .caja-juego {
+    max-width: 90%;
+    margin: 1rem auto;
+  }
+
+  aside.col-md-2 {
+    order: 2;
+  }
+
+  footer {
+    margin-top: 2rem;
+  }
+}
+
+/* ================================
+   🖥️ ESCRITORIO (≥993px)
+   ================================ */
+@media (min-width: 993px) {
+  .container-fluid {
+    max-width: 1100px;
+    margin: auto;
+  }
+
+  .marco-tablero {
+    display: flex;
+    justify-content: center;
+  }
+
+  .marco-tablero img.tablero-img {
+    width: 100%;
+    max-width: 750px;
+    border-radius: 16px;
+  }
+
+  .caja-juego {
+    margin-bottom: 1.5rem;
+  }
+
+  footer {
+    font-size: 1rem;
+    margin-top: 2rem;
+  }
+}

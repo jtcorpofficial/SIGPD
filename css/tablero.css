@@ -1,0 +1,163 @@
+@media screen and (max-width: 768px) {
+  /* === Estilos aplicados SOLO en pantallas pequeñas (tablets, móviles) === */
+
+  /* Oculta el bloque de puntuación que normalmente aparece en escritorio */
+  .bloque-puntuacion {
+    display: none;
+  }
+
+  /* Estilo para el botón que permitirá mostrar la puntuación manualmente en móvil */
+  #btnMostrarPuntuacion {
+    display: block; /* Se muestra el botón */
+    margin: 1rem auto; /* Margen superior/inferior y centrado horizontal */
+    font-size: 1rem;
+    background-color: #f59e0b; /* Amarillo anaranjado */
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Sombra para levantarlo visualmente */
+  }
+
+  /* Hace que el contenedor del tablero tenga scroll horizontal si es necesario */
+  .contenedor-tablero {
+    overflow-x: auto; /* Habilita desplazamiento horizontal */
+    width: 100%;
+  }
+
+  /* Imagen del tablero en móviles: mantiene su tamaño fijo grande (horizontal) */
+  .contenedor-tablero img {
+    width: 1000px; /* Ancho fijo más grande que la pantalla para permitir el scroll */
+    max-height: none; /* Altura sin límite */
+  }
+
+  /* Reorganiza los bloques para que en mobile el dado y los dinosaurios aparezcan al final */
+  .orden-movil {
+    display: flex;
+    flex-direction: column-reverse; /* Cambia el orden de visualización: lo último aparece arriba */
+    gap: 1.5rem; /* Espacio entre bloques */
+  }
+
+  /* Hace que tanto el dado como los dinosaurios ocupen todo el ancho disponible */
+  .bloque-dado,
+  .bloque-dinos {
+    width: 100%;
+  }
+
+  /* Scroll horizontal específicamente en el contenedor del tablero */
+  .scroll-tablero {
+    overflow-x: auto;
+    width: 100%;
+  }
+
+  /* Imagen del tablero adaptada para scroll horizontal */
+  .tablero-img {
+    width: 1000px; /* Fijamos el ancho para forzar el scroll */
+    max-width: none; /* No se limita al ancho del contenedor */
+    height: auto;
+  }
+}
+
+#mano-dinos img {
+  cursor: grab;
+  user-select: none;
+  transition: transform .15s ease;
+}
+#mano-dinos img:hover { transform: translateY(-2px) scale(1.03); }
+
+.marco-tablero{
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+.marco-tablero .tablero-img{ display:block; max-width:100%; height:auto }
+
+/* Zonas invisibles que aceptan drop */
+.zona-drop{
+  position: absolute;
+  /* activar esta línea para depurar posiciones: */
+  /* outline: 2px dashed rgba(255,255,0,.6); background: rgba(255,255,0,.08); */
+  border-radius: 12px;
+}
+.zona-drop.sobre { outline: 2px solid rgba(34,197,94,.9); } /* al arrastrar encima */
+
+/* Dinos en mano (draggables) */
+#mano-dinos img{
+  width: 72px; height: 72px; object-fit: contain;
+  cursor: grab; user-select: none; transition: transform .15s ease;
+}
+#mano-dinos img:active{ cursor: grabbing; transform: scale(0.98); }
+
+/* Dinos colocados sobre el tablero */
+.ficha-dino{
+  position: absolute;
+  width: 48px; height: 48px; object-fit: contain;
+  transform: translate(-50%, -50%); /* centra sobre el punto de drop */
+  pointer-events: none; /* que no interfiera con próximos drops */
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,.35));
+}
+
+/* === Modal fin de partida === */
+#fin-partida-backdrop{
+  position: fixed; inset: 0; 
+  background: rgba(0,0,0,.55);
+  backdrop-filter: blur(2px);
+  display: none;          /* oculto por defecto */
+  align-items: center;
+  justify-content: center;
+  z-index: 4000;
+}
+.fin-card{
+  width: min(92vw, 640px);
+  background:#fff;
+  border-radius: 18px;
+  box-shadow: 0 25px 60px rgba(0,0,0,.35);
+  padding: 1.25rem;
+}
+.fin-card h2{
+  font-weight: 800;
+  letter-spacing: .5px;
+  text-align:center;
+  margin: .25rem 0 1rem;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+}
+.fin-card h2.gano{ color: #16a34a; }  /* verde */
+.fin-card h2.perdio{ color: #dc2626; }/* rojo */
+.fin-card h2.empate{ color: #ca8a04; }/* amarillo */
+.fin-card .sub{
+  text-align:center; 
+  color:#444; 
+  margin-top:-.5rem; 
+  margin-bottom: 1rem;
+}
+.fin-card table{
+  width:100%; border-collapse: collapse; font-size: 1rem;
+}
+.fin-card th, .fin-card td{
+  padding: .65rem .75rem;
+  border-bottom: 1px solid #eee;
+}
+.fin-card th{
+  color:#555; text-transform: uppercase; font-weight: 700; font-size:.85rem;
+}
+.fin-card tr.highlight{
+  background: #f8fafc;
+}
+.fin-card .acciones{
+  display:flex; gap:.75rem; justify-content: center; margin-top:1rem;
+}
+.fin-card .btn{
+  border:0; border-radius: 12px; padding:.7rem 1rem; font-weight:700; cursor:pointer;
+  box-shadow: 0 6px 18px rgba(0,0,0,.12);
+}
+.fin-card .btn-prim{ background:#111827; color:#fff; }
+.fin-card .btn-sec { background:#f3f4f6; color:#111827; }
+
+.dinosaurio.seleccionado {
+  outline: 3px solid orange;
+  transform: scale(1.05);
+}
+
+
+
+
